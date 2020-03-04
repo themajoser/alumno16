@@ -82,6 +82,11 @@ class Post extends Model
             return $query->where('user_id', auth()->id());
         }
     }
+    public function scopeMostViewed($query)
+    {
+      return Post::orderBy('visits', 'DESC')->get();
+
+    }
 
     public function isPublished()
     {

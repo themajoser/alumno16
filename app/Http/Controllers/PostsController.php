@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserVisitPost;
+use App\Events\UserWasCreated;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,7 @@ class PostsController extends Controller
     {
         $user=Auth::user();
         UserVisitPost::dispatch($user,$post);
+
         if ($post->isPublished() || auth()->check()) {
 
             return view('posts.show', compact('post'));

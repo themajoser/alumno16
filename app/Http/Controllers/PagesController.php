@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PagesController extends Controller
 {
     public function home()
     {
         $posts = Post::published()->paginate(10);
+        $mostViewed = Post::mostViewed()->take(5);
 
-        return view('pages.home', compact('posts'));
+
+
+
+        return view('pages.home', compact('posts','mostViewed'));
     }
 
     public function about()

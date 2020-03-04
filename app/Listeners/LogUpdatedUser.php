@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\UserVisitPost;
+use App\Events\UserWasUpdated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AddVisit
+class LogUpdatedUser
 {
     /**
      * Create the event listener.
@@ -21,13 +21,11 @@ class AddVisit
     /**
      * Handle the event.
      *
-     * @param  UserVisitPost  $event
+     * @param  UserWasUpdated  $event
      * @return void
      */
-    public function handle(UserVisitPost $event)
+    public function handle(UserWasUpdated $event)
     {
-        $event->user->id!=$event->post->user_id ? $event->post->visits+=1 : null;
-
-        $event->post->save();
+        //
     }
 }

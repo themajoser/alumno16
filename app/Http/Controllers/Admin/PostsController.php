@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Events\UserWasCreated;
 use App\Http\Requests\StorePostRequest;
 use App\Post;
 use App\Tag;
@@ -23,7 +24,7 @@ class PostsController extends Controller
     {
         $this->authorize('create', new Post);
         $this->validate($request, ['title' => 'required | min:3']);
-
+        UserWasCreated::dispatch(auth()->user(),'created');
         $post = Post::create($request->all());
 
         return redirect()->route('admin.posts.edit', $post);

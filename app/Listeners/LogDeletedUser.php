@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\UserVisitPost;
+use App\Events\UserWasDeleted;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AddVisit
+class LogDeletedUser
 {
     /**
      * Create the event listener.
@@ -21,13 +21,11 @@ class AddVisit
     /**
      * Handle the event.
      *
-     * @param  UserVisitPost  $event
+     * @param  UserWasDeleted  $event
      * @return void
      */
-    public function handle(UserVisitPost $event)
+    public function handle(UserWasDeleted $event)
     {
-        $event->user->id!=$event->post->user_id ? $event->post->visits+=1 : null;
-
-        $event->post->save();
+        //
     }
 }

@@ -19,11 +19,20 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         'App\Events\UserWasCreated' => [
-            'App\Listeners\SendLoginCredentials',
+            'App\Listeners\LogCreatedUser',
         ],
         'App\Events\UserVisitPost' => [
             'App\Listeners\AddVisit',
-        ]
+        ],
+        'App\Events\UserWasDeleted' => [
+            'App\Listeners\LogDeletedUser',
+        ],
+        'App\Events\UserWasUpdated' => [
+            'App\Listeners\LogUpdatedUser',
+        ],
+        'App\Events\UserWasCreated' => [
+            'App\Listeners\LogCreatedUser',
+        ],
     ];
 
     /**

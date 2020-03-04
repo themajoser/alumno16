@@ -10,23 +10,18 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class UserWasCreated
+class UserWasDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public  $user;
-    public $type;
-
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user,$type)
+    public function __construct()
     {
-        $this->user=$user;
-        $this->type=$type;
+        //
     }
 
     /**

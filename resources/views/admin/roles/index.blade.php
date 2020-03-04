@@ -40,13 +40,17 @@
                         <td>{{ $role->guard }}</td>
                         <td>
                             <a href="{{ route('admin.roles.edit', $role) }}" class="btn btn-xs btn-info"><i class="fa fa-pencil-alt"></i></a>
-                            <form action="{{ route('admin.roles.destroy', $role) }}" method="post" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-xs btn-danger" onclick="return confirm('¿Seguro que quieres eliminar este rol?')">
-                                    <i class="fa fa-times"></i>
-                                </button>
-                            </form>
+
+
+                            @if($role->name!='Admin')
+                                <form action="{{ route('admin.roles.destroy', $role) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-xs btn-danger" onclick="return confirm('¿Seguro que quieres eliminar este rol?')">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
